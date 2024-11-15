@@ -1,0 +1,65 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    background-color: var(--black);
+    position: sticky; 
+    /* sticky position is for navbar sticking at top  */
+    top: 0;
+    z-index: 100;
+}
+
+.links{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.5rem;
+    /* gap gives space between element in flexbox */
+}
+
+.link{
+    color: var(--grey);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.logo{
+    font-size: 1.2rem;
+}
+
+.link:hover{
+    color: var(--white);
+}
+
+.mobile-drawer {
+    display: none;
+    /* at full size or when max-width is > 800 px, drawer not shown  */
+}
+
+@media only screen and (max-width: 800px){
+    /* changes to make to header styling when screen's max width is 800px  */
+    .links{
+        display: none;
+        /* after width of 800 px, all links will disappear  */
+    }
+
+    .mobile-drawer{
+        display: block;
+    }
+
+    .drawer-div{
+        width: 40vw;
+        height: 100vh;
+        background-color: var(--black);
+        padding: 1.5rem;
+    }
+
+    .logo{
+        font-size: 1rem;
+    }
+
+    .navbar{
+        padding: 1.5rem;
+    }
+}
