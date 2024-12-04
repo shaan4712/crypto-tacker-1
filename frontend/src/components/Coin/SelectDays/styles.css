@@ -1,0 +1,15 @@
+.select-days{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#demo-simple-select-label {
+    color: var(--white);
+}
+
+#demo-simple-select{
+    padding: 2.3rem;
+}
