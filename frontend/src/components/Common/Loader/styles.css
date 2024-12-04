@@ -6,6 +6,8 @@
     height: 100vh;
     background-color: var(--black);
     color: var(--blue);
-    position: absolute;
+    position: fixed;
+    overflow-x: hidden;
+    overflow-y: hidden;
     z-index: 1000;
 }
