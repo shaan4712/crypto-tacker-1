@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import './styles.css';
 import Stack from '@mui/material/Stack';
 import Button from '../Button';
