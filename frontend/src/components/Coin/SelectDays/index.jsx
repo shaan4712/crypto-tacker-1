@@ -6,11 +6,11 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import './styles.css'
 
-export default function SelectDays({days, handleDaysChange}) {
+export default function SelectDays({days, handleDaysChange, noPTag}) {
 
   return (
     <div className="select-days">
-        <p>Price Change in </p>
+        {!noPTag && <p>Price Change in </p>}
         <InputLabel id="demo-simple-select-label">Days</InputLabel>
         <Select
           labelId="demo-simple-select-label"

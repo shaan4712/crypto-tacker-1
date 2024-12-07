@@ -1,5 +1,6 @@
 import React from 'react'
 import { RWebShare } from "react-web-share";
+import { ToastContainer, toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import './styles.css'
 import Button from '../../Common/Button'

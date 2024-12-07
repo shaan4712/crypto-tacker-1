@@ -1,0 +1,14 @@
+.coins-flex{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3rem;
+    margin: 1.5rem;
+}
+
+.coin {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.8rem;
+}
