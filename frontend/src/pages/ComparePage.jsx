@@ -8,6 +8,9 @@ import settingChartData from '../functions/settingChartData'
 import Loader from '../components/Common/Loader'
 import { CoinObject } from '../functions/coinObject';
 import List from '../components/Dashboard/List'
+import CoinInfo from '../components/Coin/CoinInfo'
+import LineChart from '../components/Coin/LineChart'
+import PriceType from '../components/Coin/PriceType'
 
 const ComparePage = () => {
   // id states
@@ -22,12 +25,20 @@ const ComparePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [priceType, setPriceType] = useState('prices');
 
+  //chart data
+  const [chartData, setChartData] = useState({});
+
   useEffect(() => {
     getData();
   }, []);
 
-  const handleDaysChange = (event) => {
+  const handleDaysChange = async (event) => {
+    setIsLoading(true);
     setDays(event.target.value);
+    const prices1 = await getCoinPrices(crypto1, event.target.value, priceType);
+    const prices2 = await getCoinPrices(crypto2, event.target.value, priceType);
+    settingChartData(setChartData, prices1, prices2);
+    setIsLoading(false);
   }
 
   async function getData() {
@@ -42,6 +53,7 @@ const ComparePage = () => {
           CoinObject(setCrypto2Data, data2); //now only useful info we defined in CoinObject file will go to coinData state var
           const prices1 = await getCoinPrices(crypto1, days, priceType);
           const prices2 = await getCoinPrices(crypto2, days, priceType);
+          settingChartData(setChartData, prices1, prices2);
           console.log('BOTH PRICES FETCHED', prices1, prices2);
         }
       }
@@ -62,7 +74,7 @@ const ComparePage = () => {
       if (isCoin2) {
         setCrypto2(newValue);
         const data = await getCoinData(newValue);
-        CoinObject(setCrypto2Data, data); //now only useful info we defined in CoinObject file will go to coinData state var
+        CoinObject(setCrypto2Data, data); 
 
         const [prices1, prices2] = await Promise.all([
           getCoinPrices(crypto1, days, priceType),
@@ -77,7 +89,7 @@ const ComparePage = () => {
       else {
         setCrypto1(newValue);
         const data = await getCoinData(newValue);
-        CoinObject(setCrypto1Data, data); //now only useful info we defined in CoinObject file will go to coinData state var
+        CoinObject(setCrypto1Data, data); 
 
         const [prices1, prices2] = await Promise.all([
           getCoinPrices(newValue, days, priceType),
@@ -95,6 +107,16 @@ const ComparePage = () => {
     finally {
       setIsLoading(false);
     }
+  }
+
+  const handlePriceTypeChange = async (newType) => {
+    setIsLoading(true);
+    setPriceType(newType);
+
+    const prices1 = await getCoinPrices(crypto1, days, newType);
+    const prices2 = await getCoinPrices(crypto2, days, newType);
+    settingChartData(setChartData, prices1, prices2);
+    setIsLoading(false);
   }
 
 
@@ -117,6 +139,14 @@ const ComparePage = () => {
           <div className='grey-wrapper' style={{ padding: "0rem 1rem" }}>
             <List coin={crypto2Data} />
           </div>
+          <div className='grey-wrapper'>
+            <PriceType priceType={priceType}
+              handlePriceTypeChange={handlePriceTypeChange} />
+            <LineChart chartData={chartData}
+              priceType={priceType} multiAxis={true} />
+          </div>
+          <CoinInfo heading={crypto1Data.name} desc={crypto1Data.desc} />
+          <CoinInfo heading={crypto2Data.name} desc={crypto2Data.desc} />
         </>
       )}
     </div>

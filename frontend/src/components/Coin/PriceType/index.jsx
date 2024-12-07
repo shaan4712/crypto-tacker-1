@@ -13,7 +13,7 @@ export default function PriceType({priceType, handlePriceTypeChange}) {
       exclusive
       onChange={(e, value) => handlePriceTypeChange(e, value)}
       sx={{
-        "&.Mui-selected": {
+        "& .Mui-selected": {
           color: "var(--blue) !important",
         },
         borderColor: "var(--blue)",
