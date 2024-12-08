@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './CryptoTips.css';
+import '../styles/CryptoTips.css';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import Header from '../components/Common/Header';
 

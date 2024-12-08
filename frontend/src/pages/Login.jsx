@@ -2,7 +2,7 @@ import React from 'react';
 import { auth } from '../firebase';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import './Login.css';  
+import '../styles/Login.css';  
 import { toast } from "react-toastify";
 
 const Login = () => {
