@@ -3,6 +3,7 @@ import { auth } from '../firebase';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';  
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -11,9 +12,12 @@ const Login = () => {
     const provider = new GoogleAuthProvider();
     try {
       await signInWithPopup(auth, provider);
+      // localStorage.setItem("user", JSON.stringify(result.user));
+      toast.success("Logged in successfully!");
       navigate('/');
     } catch (error) {
       console.error('Error signing in with Google:', error);
+      toast.error("Failed to login. Please try again.");
     }
   };
 

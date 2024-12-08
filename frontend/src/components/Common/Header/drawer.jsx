@@ -11,12 +11,16 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import { Link } from 'react-router-dom';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { getAuth, signOut } from "firebase/auth";
+import './drawer.css'
 
 export default function AnchorTemporaryDrawer() {
   const [open, setOpen] = useState(false);
-  //to maintain drawer
+  const navigate = useNavigate();
+  const auth = getAuth();
 
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("theme") == "dark" ? true : false
@@ -50,15 +54,28 @@ export default function AnchorTemporaryDrawer() {
     document.documentElement.setAttribute("data-theme", "light");
   };
 
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      localStorage.removeItem("user");
+      setOpen(false); // Close drawer after logout
+      toast.success("Logged out successfully!");
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout error:", error);
+      toast.error("Failed to logout. Please try again.");
+    }
+  };
+
   return (
     <div>
       <IconButton onClick={() => setOpen(true)}>
         <MenuRoundedIcon className='link' />
       </IconButton>
       <Drawer
-        anchor={"right"} //place from where drawer opens
-        open={open} //is open true = drawer will open, false = drawer will be closed
-        onClose={() => setOpen(false)} //to close drawer
+        anchor={"right"}
+        open={open}
+        onClose={() => setOpen(false)}
       >
         <div className='drawer-div'>
           <Link to='/'>
@@ -73,7 +90,29 @@ export default function AnchorTemporaryDrawer() {
           <Link to='/dashboard'>
             <p className='link'>Dashboard</p>
           </Link>
-          <Switch checked={darkMode} onClick={() => changeMode()} />
+          <div style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'space-between',
+            width: '100%',
+            padding: '0.5rem 0'
+          }}>
+            <Switch checked={darkMode} onClick={() => changeMode()} />
+          </div>
+          <Divider style={{ margin: '0.5rem 0' }} />
+          <div 
+            className='link' 
+            onClick={handleLogout}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+              gap: '0.5rem'
+            }}
+          >
+            <LogoutIcon />
+            <p>Logout</p>
+          </div>
         </div>
       </Drawer>
     </div>

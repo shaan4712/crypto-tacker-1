@@ -1,0 +1,11 @@
+.drawer-div .link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .drawer-div .link:hover {
+    background-color: var(--grey);
+    transition: all 0.3s;
+  }

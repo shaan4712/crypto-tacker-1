@@ -3,12 +3,14 @@ import './styles.css';
 import Stack from '@mui/material/Stack';
 import Button from '../Button';
 import AnchorTemporaryDrawer from './drawer';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Switch } from '@mui/material';
 import { toast } from 'react-toastify';
+import { getAuth, signOut } from "firebase/auth";
 
 const Header = () => {
-
+  const navigate = useNavigate();
+  const auth = getAuth();
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("theme") == "dark" ? true : false
   );
@@ -41,6 +43,18 @@ const Header = () => {
     document.documentElement.setAttribute("data-theme", "light");
   };
 
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      localStorage.removeItem("user");
+      toast.success("Logged out successfully!");
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout error:", error);
+      toast.error("Failed to logout. Please try again.");
+    }
+  };
+
   return (
     <div className='navbar'>
       <Link to='/'>
@@ -63,10 +77,13 @@ const Header = () => {
         <Link to='/dashboard'>
           <Button text={"Dashboard"}
             onClick={() => console.log("Clicked dashboard")}
-          // outlined={true}
           />
-          {/* giving value to prop  */}
         </Link>
+        <Button 
+          text={"Logout"}
+          onClick={handleLogout}
+          outlined={true}
+        />
       </div>
 
       <div className='mobile-drawer'>
