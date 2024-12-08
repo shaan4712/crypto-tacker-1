@@ -90,9 +90,12 @@ export default function AnchorTemporaryDrawer() {
           <Link to='/dashboard'>
             <p className='link'>Dashboard</p>
           </Link>
-          <div style={{ 
-            display: 'flex', 
-            alignItems: 'center', 
+          <Link to='/cryptotips'>
+            <p className='link'>Get Insights</p>
+          </Link>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
             justifyContent: 'space-between',
             width: '100%',
             padding: '0.5rem 0'
@@ -100,8 +103,8 @@ export default function AnchorTemporaryDrawer() {
             <Switch checked={darkMode} onClick={() => changeMode()} />
           </div>
           <Divider style={{ margin: '0.5rem 0' }} />
-          <div 
-            className='link' 
+          <div
+            className='link'
             onClick={handleLogout}
             style={{
               display: 'flex',
