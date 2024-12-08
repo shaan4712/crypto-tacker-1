@@ -1,5 +1,3 @@
-import React from 'react'
-
 //can also be done on the basis of array length
 
 const convertNumbers = (number) => {

@@ -80,3 +80,31 @@ img {
   align-items: center;
   margin: 1.5rem;
 }
+
+.retry-button {
+    background-color: transparent;
+    color: var(--white);
+    padding: 0.7rem 1.5rem;
+    border-radius: 3rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    border: 2px solid var(--blue);
+    min-width: 100px;
+    text-transform: capitalize;
+    transition: all 0.3s;
+}
+
+.retry-button:hover {
+  background-color: var(--blue);
+}
+
+.error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: column;
+  margin: 2rem;
+  font-weight: 450;
+}
