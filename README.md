@@ -5,7 +5,7 @@ The project is being built using Vite + ReactJS.
 1. Fork the repository
 2. Clone the repository
    ```sh
-   git clone [https://github.com/shaan4712/mernstack-gmailclone-main.git]
+   git clone [https://github.com/shaan4712/crypto-tacker-vite.git]
    ```
 3. Install the required dependencies (in both frontend & backend directories)
    ```sh
