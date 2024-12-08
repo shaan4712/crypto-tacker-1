@@ -6,11 +6,26 @@ import HomePage from './pages/HomePage';
 import Dashboard from './pages/Dashboard';
 import CoinPage from './pages/CoinPage';
 import ComparePage from './pages/ComparePage';
+import CryptoTips from './pages/CryptoTips';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { createTheme, ThemeProvider } from "@mui/material";
 
 function App() {
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#3a80e9",
+      },
+    },
+  });
+
   return (
     <div className="App">
       <AuthProvider>
+      <ToastContainer />
+      <ThemeProvider theme={theme} />
         <BrowserRouter>
           <Routes>
             {/* Public route */}
@@ -46,6 +61,14 @@ function App() {
               element={
                 <PrivateRoute>
                   <ComparePage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/cryptotips"
+              element={
+                <PrivateRoute>
+                  <CryptoTips />
                 </PrivateRoute>
               }
             />

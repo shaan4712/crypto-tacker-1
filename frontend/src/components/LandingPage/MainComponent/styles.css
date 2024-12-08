@@ -7,7 +7,7 @@
 
 .track-crypto-heading,
 .real-time-heading{
-    font-size: 8rem;
+    font-size: 7rem;
     margin: 0;
 }
 
@@ -29,7 +29,7 @@
 
 .info-text{
     color: var(--grey);
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 300;
 }
 

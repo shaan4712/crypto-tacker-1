@@ -1,0 +1,197 @@
+/* CryptoAIAdvisor.css */
+.advisor-container {
+    min-height: 100vh;
+    background-color: var(--black);
+    color: var(--white);
+  }
+  
+  .advisor-header {
+    background: linear-gradient(120deg, var(--darkgrey) 0%, var(--black) 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .header-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, var(--blue) 0%, #60c8ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+  }
+  
+  .header-content p {
+    color: var(--grey);
+    font-size: 1.1rem;
+  }
+  
+  .advisor-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .input-section {
+    margin: 2rem 0;
+  }
+  
+  .input-wrapper {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .prompt-input {
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    background: var(--darkgrey);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    color: var(--white);
+    font-size: 1rem;
+    resize: vertical;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .prompt-input:focus {
+    outline: none;
+    border-color: var(--blue);
+  }
+  
+  .generate-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--blue);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .generate-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+  }
+  
+  .generate-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  .suggested-section {
+    margin: 3rem 0;
+  }
+  
+  .suggested-section h2 {
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .questions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  
+  .question-card {
+    background: var(--darkgrey);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .question-card:hover {
+    background: rgba(58, 128, 233, 0.1);
+    border-color: var(--blue);
+  }
+  
+  .response-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .response-section h2 {
+    color: var(--blue);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .response-content {
+    line-height: 1.6;
+    white-space: pre-line;
+  }
+  
+  .error-message {
+    background: rgba(249, 65, 65, 0.1);
+    color: var(--red);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    border: 1px solid var(--red);
+  }
+  
+  .disclaimer {
+    color: var(--grey);
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Loading Animation */
+  .loader {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    animation: rotation 1s linear infinite;
+  }
+  
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .advisor-header {
+      padding: 2rem 1rem;
+    }
+  
+    .header-content h1 {
+      font-size: 2rem;
+    }
+  
+    .advisor-content {
+      padding: 1rem;
+    }
+  
+    .questions-grid {
+      grid-template-columns: 1fr;
+    }
+  }

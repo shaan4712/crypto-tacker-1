@@ -37,7 +37,7 @@
     /* at full size or when max-width is > 800 px, drawer not shown  */
 }
 
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 980px){
     /* changes to make to header styling when screen's max width is 800px  */
     .links{
         display: none;
