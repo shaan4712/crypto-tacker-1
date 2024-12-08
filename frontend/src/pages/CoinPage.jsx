@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import Header from '../components/Common/Header'
 import Loader from '../components/Common/Loader'
 import axios from "axios"
-import { CoinObject } from '../functions/coinObject'
+import { CoinObject } from '../functions/CoinObject'
 import List from '../components/Dashboard/List'
 import Footer from '../components/Common/Footer'
 import CoinInfo from '../components/Coin/CoinInfo'
