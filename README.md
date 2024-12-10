@@ -32,7 +32,6 @@ A real-time cryptocurrency tracking application that monitors 100 different cryp
 Before running this project, ensure you have:
 - Node.js (version 14.0 or higher)
 - npm or yarn package manager
-- Modern web browser with Web Speech API support
 
 ## Installation & Setup 🚀
 
