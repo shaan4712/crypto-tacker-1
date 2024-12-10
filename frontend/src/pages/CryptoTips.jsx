@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../styles/CryptoTips.css';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import Header from '../components/Common/Header';
+import BackOnTop from '../components/Common/BackOnTop'
 
 const CryptoTips = () => {
   const [response, setResponse] = useState('');
@@ -58,6 +59,7 @@ const CryptoTips = () => {
   return (
     <>
         <Header />
+        <BackOnTop />
         <div className="advisor-container">
       {/* Gradient Header */}
       <div className="advisor-header">

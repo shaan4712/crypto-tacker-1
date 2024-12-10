@@ -12,6 +12,7 @@ import CoinInfo from '../components/Coin/CoinInfo'
 import LineChart from '../components/Coin/LineChart'
 import PriceType from '../components/Coin/PriceType'
 import Footer from '../components/Common/Footer'
+import BackOnTop from '../components/Common/BackOnTop'
 
 const ComparePage = () => {
   // id states
@@ -132,6 +133,7 @@ const ComparePage = () => {
   return (
     <div>
       <Header />
+      <BackOnTop />
       {isLoading ? (
         <Loader />
       ) : (

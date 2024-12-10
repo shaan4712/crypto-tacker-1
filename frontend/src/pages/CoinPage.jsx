@@ -14,6 +14,7 @@ import { convertDate } from '../functions/convertDate'
 import SelectDays from '../components/Coin/SelectDays'
 import settingChartData from '../functions/settingChartData'
 import PriceType from '../components/Coin/PriceType'
+import BackOnTop from '../components/Common/BackOnTop'
 
 const CoinPage = () => {
     const { id } = useParams();
@@ -69,6 +70,7 @@ const CoinPage = () => {
     return (
         <div>
             <Header />
+            <BackOnTop />
             {isLoading ? (<Loader />) :
                 (
                     <>
