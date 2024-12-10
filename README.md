@@ -4,7 +4,7 @@ A real-time cryptocurrency tracking application that monitors 100 different cryp
 
 ## Live Link
 
-[Kanban Board](https://crypto-tacker-vite.vercel.app/)
+[CryptoTracker.](https://crypto-tacker-vite.vercel.app/)
 
 ## Features:
 
