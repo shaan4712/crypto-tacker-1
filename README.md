@@ -82,4 +82,4 @@ Make sure to obtain necessary API keys and configure them in your environment va
 
 ## Contact 📧
 
-Mail at: shaan2k3@gmail.com
+Mail me at: shaan2k3@gmail.com
