@@ -21,7 +21,29 @@
 .td-image{
     width: 3rem !important;
     margin-right: 2.5rem;
+    position: relative;  /* Add this */
 }
+
+  
+.td-star {
+    width: 3rem !important;
+    text-align: center !important;
+  }
+  
+  .star-icon-list {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: var(--white);
+    transition: all 0.3s;
+  }
+  
+  .star-icon-list:hover {
+    color: gold;
+  }
+
 
 .td-center-align{
     text-align: center;
@@ -58,6 +80,10 @@
     *{
         font-size: small;
     }
+
+    .td-star {
+        width: 2rem !important;
+      }
 }
 
 @media only screen and (max-width: 600px){

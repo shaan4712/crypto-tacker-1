@@ -4,6 +4,7 @@
     background-color: var(--darkgrey);
     border: 2px solid var(--darkgrey);
     border-radius: 0.75rem;
+    position: relative;
 }
 
 .grid-container:hover{
@@ -16,12 +17,31 @@
     transition: all 0.3s;
 }
 
+.star-icon {
+    position: absolute;
+    top: 1rem;          /* Position from top */
+    right: 1rem;        /* Position from right */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: var(--white);
+    transition: all 0.3s;
+    z-index: 1;         /* Add this to ensure it's clickable */
+  }
+
+  .star-icon:hover {
+    color: gold;
+  }
+
 .info-flex{
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 1rem;
     margin: 1.5rem;
+    position: relative; /* new */
 }
 
 .coin-logo{

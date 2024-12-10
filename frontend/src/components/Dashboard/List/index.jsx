@@ -1,13 +1,56 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './styles.css'
 import TrendingUpRoundedIcon from '@mui/icons-material/TrendingUpRounded';
 import TrendingDownRoundedIcon from '@mui/icons-material/TrendingDownRounded';
 import { Tooltip } from '@mui/material';
 import convertNumbers from '../../../functions/convertNumbers';
 import { Link } from 'react-router-dom';
+import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
+import StarRoundedIcon from '@mui/icons-material/StarRounded';
+import { addToWatchlist, removeFromWatchlist } from '../../../backend/firestore/watchlist';
+import { useAuth } from '../../../AuthContext';
+import { toast } from 'react-toastify';
+import { useWatchlist } from '../../../context/WatchlistContext';
 
 
-const List = ({ coin }) => {
+const List = ({ coin, isWatchlist, onRemove }) => {
+
+  const [isAdded, setIsAdded] = useState(false);
+  const { user } = useAuth();
+  const { watchlistCoins, updateWatchlist } = useWatchlist();
+
+   useEffect(() => {
+    setIsAdded(watchlistCoins.includes(coin.id));
+  }, [watchlistCoins, coin.id]);
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    if (!user) {
+      toast.error("Please login to add to watchlist!");
+      return;
+    }
+
+    try {
+      if (isAdded) {
+        await removeFromWatchlist(user.uid, coin.id);
+        await updateWatchlist(); // Update global state
+        setIsAdded(false);
+        if (isWatchlist && onRemove) {
+          onRemove(coin.id); // Immediately remove from watchlist view
+        }
+        toast.success(`${coin.name} removed from watchlist!`);
+      } else {
+        await addToWatchlist(user.uid, coin);
+        await updateWatchlist(); // Update global state
+        setIsAdded(true);
+        toast.success(`${coin.name} added to watchlist!`);
+      }
+    } catch (error) {
+      toast.error("Something went wrong!");
+      console.error(error);
+    }
+  };
+
   return (
     <Link to={`/coin/${coin.id}`}>
       <tr className='list-row'>
@@ -78,6 +121,14 @@ const List = ({ coin }) => {
           <td className='mobile-td-mkt'>
             <p className='total-volume td-right-align'>
               {convertNumbers(coin.market_cap)}</p>
+          </td>
+        </Tooltip>
+
+        <Tooltip title={isAdded ? "Remove from Watchlist" : "Add to Watchlist"}>
+          <td className='td-star'>
+            <div className='star-icon-list' onClick={handleClick}>
+              {isAdded ? <StarRoundedIcon /> : <StarBorderRoundedIcon />}
+            </div>
           </td>
         </Tooltip>
       </tr>

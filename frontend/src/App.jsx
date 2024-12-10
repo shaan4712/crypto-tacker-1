@@ -10,6 +10,8 @@ import CryptoTips from './pages/CryptoTips';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createTheme, ThemeProvider } from "@mui/material";
+import Watchlist from './pages/Watchlist';
+import { WatchlistProvider } from './context/WatchlistContext';
 
 function App() {
 
@@ -24,59 +26,69 @@ function App() {
   return (
     <div className="App">
       <AuthProvider>
-      <ToastContainer />
-      <ThemeProvider theme={theme} />
-        <BrowserRouter>
-          <Routes>
-            {/* Public route */}
-            <Route path="/login" element={<Login />} />
+        <WatchlistProvider>
+          <ToastContainer />
+          <ThemeProvider theme={theme} />
+          <BrowserRouter>
+            <Routes>
+              {/* Public route */}
+              <Route path="/login" element={<Login />} />
 
-            {/* Protected routes */}
-            <Route
-              path="/"
-              element={
-                <PrivateRoute>
-                  <HomePage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/dashboard"
-              element={
-                <PrivateRoute>
-                  <Dashboard />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/coin/:id"
-              element={
-                <PrivateRoute>
-                  <CoinPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/compare"
-              element={
-                <PrivateRoute>
-                  <ComparePage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/cryptotips"
-              element={
-                <PrivateRoute>
-                  <CryptoTips />
-                </PrivateRoute>
-              }
-            />
+              {/* Protected routes */}
+              <Route
+                path="/"
+                element={
+                  <PrivateRoute>
+                    <HomePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/dashboard"
+                element={
+                  <PrivateRoute>
+                    <Dashboard />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/coin/:id"
+                element={
+                  <PrivateRoute>
+                    <CoinPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/compare"
+                element={
+                  <PrivateRoute>
+                    <ComparePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/cryptotips"
+                element={
+                  <PrivateRoute>
+                    <CryptoTips />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/watchlist"
+                element={
+                  <PrivateRoute>
+                    <Watchlist />
+                  </PrivateRoute>
+                }
+              />
 
-            {/* Catch all route - redirect to home */}
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        </BrowserRouter>
+              {/* Catch all route - redirect to home */}
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </BrowserRouter>
+        </WatchlistProvider>
       </AuthProvider>
     </div>
   );

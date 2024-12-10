@@ -7,7 +7,7 @@ import "./styles.css";
 import Grid from '../Grid';
 import List from '../List';
 
-export default function TabsComponent({ coins }) {
+export default function TabsComponent({ coins, isWatchlist, onRemove }) {
   const [value, setValue] = React.useState('grid');
 
   const handleChange = (event, newValue) => {
@@ -27,22 +27,26 @@ export default function TabsComponent({ coins }) {
   return (
     <div>
       <TabContext value={value}>
-          <TabList onChange={handleChange} variant="fullWidth">
-            <Tab label="Grid" value="grid" sx={style}/>
-            <Tab label="List" value="list" sx={style}/>
-          </TabList>
+        <TabList onChange={handleChange} variant="fullWidth">
+          <Tab label="Grid" value="grid" sx={style} />
+          <Tab label="List" value="list" sx={style} />
+        </TabList>
 
         <TabPanel value="grid">
           <div className='grid-flex'>
             {coins.map((coin, i) => {
-              return <Grid coin={coin} key={i}/>;
+              return <Grid coin={coin} key={i}
+                isWatchlist={isWatchlist}
+                onRemove={onRemove} />;
             })}
           </div>
         </TabPanel>
         <TabPanel value="list">
           <table className='list-table'>
             {coins.map((item, i) => {
-              return <List coin={item} key={i} />
+              return <List coin={item} key={i}
+                isWatchlist={isWatchlist}
+                onRemove={onRemove} />
             })}
           </table>
         </TabPanel>
