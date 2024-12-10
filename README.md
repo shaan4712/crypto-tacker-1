@@ -6,6 +6,8 @@ A real-time cryptocurrency tracking application that monitors 100 different cryp
 
 [CryptoTracker.](https://crypto-tacker-vite.vercel.app/)
 
+![image](https://github.com/user-attachments/assets/02a6ffb0-bac6-4444-a343-fc68349e818e)
+
 ## Features:
 
 - **Real-time Tracking**: Monitor 100 cryptocurrencies with live price updates
@@ -23,9 +25,6 @@ A real-time cryptocurrency tracking application that monitors 100 different cryp
 - Gemini API
 - Public Crypto APIs
 - Real-time data integration
-
-![image](https://github.com/user-attachments/assets/02a6ffb0-bac6-4444-a343-fc68349e818e)
-
 
 ## Prerequisites 📋
 
